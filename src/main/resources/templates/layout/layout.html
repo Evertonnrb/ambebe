@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <title>Cervejaria</title>
+
+        <link rel="stylesheet" type="text/css" th:href="@{/stylesheets/cervejaria.min.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors.min.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/stylesheets/application.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/stylesheets/styles.css}"/>
+        <!--<link rel="shortcut icon" th:href="@{/imagens/favicon.png}">-->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <div class="aw-layout-loading  js-loading-overlay">
+            <div class="aw-layout-loading__container">
+                <span class="aw-balls-spinner">Carregando...</span>
+            </div>
+        </div>
+
+        <div class="aw-layout-page">
+            <!--inicio menu navegacao-->
+                <div th:replace="layout/fragments/menu"></div>
+            <!--fim menu navegacao-->
+            <!--inicio sidebar-->
+             <div th:replace="layout/fragments/asside"></div>
+            <!--fim sidebar-->
+
+
+            <!--inicio section-->
+             <section class="aw-layout-content  js-content" layout:fragment="conteudo"></section>
+            <!--fim section-->
+
+            <!--inicio footer-->
+                <div th:replace="layout/fragments/footer"></div>
+            <!--fim footer-->
+        </div>
+        <script th:src="@{/javascripts/vendors.min.js}"></script>
+        <script th:src="@{/javascripts/cerva.js}"></script>
+        <script th:src="@{/javascripts/cerva.min.js}"></script>
+        <script th:src="@{/javascripts/jquery.maskMoney.min.js}"></script>
+        <script th:src="@{/javascripts/script.js}"></script>
+        <script th:src="@{/javascripts/estilo.cadastro-rapido.js}"></script>
+    </body>
+
+</html>

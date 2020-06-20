@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/layout">
+<head>
+    <title>Cidades</title>
+</head>
+<section layout:fragment="conteudo">
+    <div class="page-header">
+        <div class="container-fluid">
+            <h1>Casdastro de cidade</h1>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <form action="" class="form-vertical">
+            <div class="row">
+                <div class="col-sm-8 form-group">
+                    <label for="estado">Estado</label>
+                    <select name="estado" id="estado" class="form-control"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-lg-5 form-group">
+                    <label for="nomeCidade">Nome</label>
+                    <input type="text" id="nomeCidade" name="nomeCidade" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+</section>

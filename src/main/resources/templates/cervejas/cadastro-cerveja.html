@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/layout">
+<head>
+    <title>Cadastro de cervejas</title>
+</head>
+
+<section layout:fragment="conteudo">
+    <div class="page-header">
+        <div class="container-fluid">
+            <h1>
+                Cadastro de cerveja
+            </h1>
+        </div>
+    </div>
+    <div class="container-fluid">
+            <div th:include="layout/fragments/sucesso-validacao"></div>
+        <form method="post" th:object="${cerveja}" class="form-vertical js-form-loading">
+            <th:block th:include="layout/fragments/erro-validacao"></th:block>
+        </form>
+
+        <form method="post" class="form-vertical  js-form-loading" th:object="${cerveja}">
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('sku')} ? has-error">
+                        <label for="sku" class="control-label">SKU</label>
+                        <input id="sku" name="sku" type="text" class="form-control" th:field="*{sku}"/>
+                    </div>
+                </div>
+                <div class="col-sm-10">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
+                        <label for="nome" class="control-label">Nome</label>
+                        <input id="nome" name="nome" type="text" class="form-control" th:field="*{nome}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+                <label for="descricao" class="control-label">Descrição</label>
+                <textarea id="descricao" name="descricao" rows="3" class="form-control"
+                          th:field="*{descricao}"></textarea>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 form-group " th:classappend="${#fields.hasErrors('estilo')} ? has-error">
+                    <label for="estilo" class="control-label">Estilo</label>
+                    <div class="bw-field-action">
+                        <select name="estilo" id="estilo" class="form-control" th:field="*{estilo}">
+                            <option value="">Selecione</option>
+                            <option th:each="estilo : ${estilos}" th:value="${estilo.codigo}" th:text="${estilo.nome}">
+                                Selecione
+                            </option>
+                        </select>
+                        <div class="bw-field-action__icon">
+                            <a href="#" data-toggle="modal" data-target="#modalCadastroRapido">
+                                <i class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 form-group " th:classappend="${#fields.hasErrors('sabor')} ? has-error">
+                    <label for="sabor" class="control-label">Sabor</label>
+                    <select name="sabor" id="sabor" class="form-control" th:field="*{sabor}">
+                        <option value="">Selecione</option>
+                        <option th:each="sabor : ${sabores}" th:value="${sabor}" th:text="${sabor.descricao}">
+                            Selecione
+                        </option>
+                    </select>
+                </div>
+                <div class="col-sm-3 form-group" th:classappend="${#fields.hasErrors('teorAlcoolico')} ? has-error">
+                    <label for="teorAlcoolico" class="control-label">Teor alcoolíco</label>
+                    <div class="input-group">
+                        <input type="text" name="teorAlcoolico" id="teorAlcoolico" class="form-control js-decimal"
+                               th:field="*{teorAlcoolico}">
+                        <div class="input-group-addon">%</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 form-group" th:classappend="${#fields.hasErrors('origem')} ? has-error">
+                    <label class="control-label">Origem</label>
+                    <div>
+                        <th:block th:each="origem : ${origens}">
+                            <div class="radio radio-inline">
+                                <input type="radio" name="origem" th:id="|id_${origem}|" th:value="${origem}"
+                                       th:field="*{origem}">
+                                <label th:for="|id_${origem}|" th:text="${origem.descricao}">Origem da cerveja</label>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3" >
+                    <div class="form-group" th:classappend="${#fields.hasErrors('valor')} ? has-error">
+                        <label for="valor" class="control-label">Preço</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">R$</div>
+                            <input id="valor" name="valor" type="text" class="form-control js-decimal" placeholder="R$"
+                                   th:field="*{valor}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" th:classappend="${#fields.hasErrors('comissao')} ? has-error">
+                    <div class="form-group">
+                        <label for="comissao" class="control-label">Comissão</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">R$</div>
+                            <input type="text" id="comissao" name="comissao" class="form-control js-decimal"
+                                   placeholder="R$" th:field="*{comissao}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" th:classappend="${#fields.hasErrors('quantidadeEstoque')} ? has-error">
+                    <div class="form-group">
+                        <label for="quantidadeEstoque"  >Estoque</label>
+                        <input id="quantidadeEstoque" name="quantidadeEstoque" type="text" class="form-control js-plain"
+                               placeholder="Unidades" th:field="*{quantidadeEstoque}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn  btn-primary" type="submit">Salvar</button>
+            </div>
+        </form>
+    </div>
+    <div th:replace="layout/fragments/modal-cadastro-rapido :: modal"></div>
+</section>
+</html>

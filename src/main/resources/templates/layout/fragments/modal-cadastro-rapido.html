@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <div class="modal fade" id="modalCadastroRapido" tabindex="-1" role="dialog" th:fragment="modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Cadastro de estilo</h4>
+                </div>
+                <div class="modal-body">
+                    <!--alert success - danger-->
+                    <div class="alert alert-danger hidden js-msg-cadastro-rapido" role="alert"></div>
+
+                    <form action="" class="form-horizontal" th:action="@{/estilos}">
+                        <div class="form-group">
+                            <label for="nomeEstilo" class="col-sm-2 control-label">Nome</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="nomeEstilo" class="form-control" autofocus>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary js-modal-cadastro-rapido-btn-salvar">Salvar</button>
+                    <button type="button" id="btnModalSalvar" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
