@@ -6,6 +6,11 @@ $(function () {
         multiple: true,
         type:'json',
         allow:'*.(jpg|jpeg|png)',
+        complete:function(resposta){
+            $('input[name=foto]').val(resposta.nome)
+            $('input[name=contentType]').val(resposta.contentType)
+            console.log('resposta = ',resposta)
+        },
         /*beforeSend: function () {
             console.log('beforeSend', arguments);
         },
@@ -28,7 +33,7 @@ $(function () {
             bar.removeAttribute('hidden');
             bar.max = e.total;
             bar.value = e.loaded;
-        },*/
+        },
 
         progress: function (e) {
             console.log('progress', arguments);
@@ -43,7 +48,7 @@ $(function () {
             bar.max = e.total;
             bar.value = e.loaded;
         },
-
+*/
         completeAll: function () {
             console.log('completeAll', arguments);
 

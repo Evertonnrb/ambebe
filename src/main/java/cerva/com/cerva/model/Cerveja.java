@@ -58,6 +58,11 @@ public class Cerveja implements Serializable {
     @JoinColumn(name = "codigo_estilo")
     private Estilo estilo;
 
+    private String foto;
+
+    @Column(name = "content_type")
+    private String contentType;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
